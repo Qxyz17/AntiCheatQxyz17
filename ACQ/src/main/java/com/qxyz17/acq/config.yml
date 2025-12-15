@@ -1,0 +1,48 @@
+# ACQ 反作弊配置
+# 版本: 2.0.0
+
+# 语言设置 (zh/en)
+language: zh
+
+# 封禁设置
+ban:
+  enabled: true
+  command: "ban %player% [ACQ] %reason%"
+  threshold: 50
+  broadcast: true
+
+# 检测设置
+detection:
+  sensitivity: 1.0
+  max_vl: 100
+  reset_time: 300
+  
+# 警报设置
+alerts:
+  enabled: true
+  sound: true
+  title: true
+  format: "&8[&d&lACQ&8] &c%player% &7触发了 &e%check% &7(VL: &c%vl%&7) &8- &f%details%"
+
+# UI设置
+ui:
+  animations: true
+  gradient_effects: true
+  particle_effects: false
+
+# 模块设置
+modules:
+  KillAura:
+    enabled: true
+    max_violations: 10
+    sensitivity: 1.0
+  Reach:
+    enabled: true
+    max_violations: 8
+    max_distance: 4.5
+  Speed:
+    enabled: true
+    max_violations: 12
+  Fly:
+    enabled: true
+    max_violations: 15
