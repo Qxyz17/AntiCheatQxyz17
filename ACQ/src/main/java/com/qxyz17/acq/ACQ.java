@@ -60,6 +60,26 @@ public class ACQ extends JavaPlugin {
             new Metrics(this, 17897);
         } catch (Exception e) {
             getLogger().info("统计服务启动失败，但插件正常运行");
+        // 注册指令
+        getCommand("acq").setExecutor(new ACQCommand(this));
+        // 注册跨版本协
+        PacketEvents.getAPI().getEventManager().registerListener(new VersionBridge(detectionManager));
+        PacketEvents.getAPI().init();
+        //启动 Web 面板
+        webHost = getConfig().getString("web.host", "0.0.0.0");
+        webPort = getConfig().getInt("web.port", 8080);
+        web = new WebPanel(configManager, detectionManager, webPort);
+        getLogger().info("WebPanel running at http://" + webHost + ":" + webPort);
+    }
+
+    @Override
+    public void onDisable() {
+        if (web != null) web.stop();
+        PacketEvents.getAPI().terminate();
+    }
+
+    public String getWebHost() { return webHost; }
+    public int    getWebPort() { return webPort; }
         }
     }
     
