@@ -7,13 +7,13 @@ description: 反作弊系统 by Qxyz17
 
 commands:
   acq:
-    description: 打开ACQ菜单
-    usage: /<command>
-    permission: acq.use
-  acqadmin:
-    description: ACQ管理员命令
-    usage: /<command> [toggle/lang/debug]
+    description: ACQ 管理主命令
+    usage: /acq <info|ban|unban|reload|ml|web>
     permission: acq.admin
+permissions:
+  acq.admin:
+    description: 使用 ACQ 管理命令
+    default: op
 
 permissions:
   acq.use:
