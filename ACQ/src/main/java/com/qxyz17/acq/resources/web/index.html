@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>ACQ Panel</title>
+  <style>body{font-family:Arial;background:#111;color:#0ff}button{margin:4px}</style>
+</head>
+<body>
+  <h2>ACQ Web Panel</h2>
+  <div id="stats">加载中…</div>
+  <button onclick="toggle('fly')">Fly 检测开关</button>
+  <button onclick="toggle('killaura')">KillAura 检测开关</button>
+  <script>
+    function toggle(m){fetch('/api/toggle/'+m,{method:'POST'}).then(r=>r.json()).then(d=>load())}
+    function load(){fetch('/api/info').then(r=>r.json()).then(j=>{document.getElementById('stats').innerText=JSON.stringify(j,null,2)})}
+    load(); setInterval(load,2000);
+  </script>
+</body>
+</html>
