@@ -1,0 +1,30 @@
+name: ACQ
+version: 2.0.0
+main: com.qxyz17.acq.ACQ
+author: Qxyz17
+api-version: 1.13
+description: 反作弊系统 by Qxyz17
+
+commands:
+  acq:
+    description: 打开ACQ菜单
+    usage: /<command>
+    permission: acq.use
+  acqadmin:
+    description: ACQ管理员命令
+    usage: /<command> [toggle/lang/debug]
+    permission: acq.admin
+
+permissions:
+  acq.use:
+    description: 使用ACQ基础命令
+    default: op
+  acq.admin:
+    description: 管理ACQ系统
+    default: op
+  acq.alerts:
+    description: 接收ACQ警报
+    default: op
+  acq.bypass:
+    description: 绕过ACQ检测
+    default: false
